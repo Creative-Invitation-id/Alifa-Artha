@@ -2,7 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Great+Vibes&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&display=swap');
+
+@font-face {
+  font-family: 'Anatomical';
+  src: url('/fonts/Anatomical.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Vremya';
+  src: url('/fonts/Vremya.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 @layer base {
   :root {
@@ -45,8 +61,8 @@
     --wedding-blush: 350 40% 92%;
 
     /* Fonts */
-    --font-script: 'Great Vibes', cursive;
-    --font-serif: 'Cormorant Garamond', serif;
+    --font-anatomical: 'Anatomical', serif;
+    --font-vremya: 'Vremya', sans-serif;
     --font-arabic: 'Amiri', serif;
   }
 
@@ -102,10 +118,15 @@
 @layer components {
   .phone-container {
     width: 100%;
-    max-width: 390px;
     height: 100dvh;
-    max-height: 844px;
     @apply bg-gradient-to-br from-wedding-cream via-wedding-blush to-secondary overflow-hidden relative;
+  }
+
+  @media (min-width: 640px) {
+    .phone-container {
+      max-width: 390px;
+      max-height: 844px;
+    }
   }
 
   .wedding-gradient {

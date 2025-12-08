@@ -13,19 +13,19 @@ export const SlideInitials: React.FC<SlideInitialsProps> = ({ showContent }) => 
         {/* Initials with staggered animation */}
         <div className="flex flex-col items-center gap-0">
           <span 
-            className="font-script text-7xl text-primary opacity-0 animate-fade-in-scale"
+            className="font-anatomical text-7xl text-primary opacity-0 animate-fade-in-scale"
             style={{ animationDelay: '0ms' }}
           >
             A
           </span>
           <span 
-            className="font-serif-wedding text-2xl text-primary/70 opacity-0 animate-fade-in -my-2"
+            className="font-vremya text-2xl text-primary/70 opacity-0 animate-fade-in -my-2"
             style={{ animationDelay: '300ms' }}
           >
             &
           </span>
           <span 
-            className="font-script text-7xl text-primary opacity-0 animate-fade-in-scale"
+            className="font-anatomical text-7xl text-primary opacity-0 animate-fade-in-scale"
             style={{ animationDelay: '600ms' }}
           >
             A
@@ -42,7 +42,7 @@ export const SlideInitials: React.FC<SlideInitialsProps> = ({ showContent }) => 
 
         {/* Subtitle */}
         <p 
-          className="font-serif-wedding text-sm text-primary/60 mt-4 tracking-widest uppercase opacity-0 animate-fade-in-up"
+          className="font-vremya text-sm text-primary/60 mt-4 tracking-widest uppercase opacity-0 animate-fade-in-up"
           style={{ animationDelay: '1200ms' }}
         >
           The Wedding

@@ -57,8 +57,8 @@ export default {
         },
       },
       fontFamily: {
-        script: ['Great Vibes', 'cursive'],
-        'serif-wedding': ['Cormorant Garamond', 'serif'],
+        anatomical: ['Anatomical', 'serif'],
+        vremya: ['Vremya', 'sans-serif'],
         arabic: ['Amiri', 'serif'],
       },
       borderRadius: {

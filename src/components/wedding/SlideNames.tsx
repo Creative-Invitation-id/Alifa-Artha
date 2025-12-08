@@ -12,21 +12,21 @@ export const SlideNames: React.FC<SlideNamesProps> = ({ showContent }) => {
       <div className="text-center">
         {/* Names */}
         <h1 
-          className="font-script text-5xl text-primary opacity-0 animate-fade-in-up"
+          className="font-anatomical text-5xl text-primary opacity-0 animate-fade-in-up"
           style={{ animationDelay: '0ms' }}
         >
           Alifa
         </h1>
         
         <span 
-          className="font-serif-wedding text-xl text-primary/70 block my-2 opacity-0 animate-fade-in"
+          className="font-vremya text-xl text-primary/70 block my-2 opacity-0 animate-fade-in"
           style={{ animationDelay: '300ms' }}
         >
           &
         </span>
         
         <h1 
-          className="font-script text-5xl text-primary opacity-0 animate-fade-in-up"
+          className="font-anatomical text-5xl text-primary opacity-0 animate-fade-in-up"
           style={{ animationDelay: '600ms' }}
         >
           Artha
@@ -42,7 +42,7 @@ export const SlideNames: React.FC<SlideNamesProps> = ({ showContent }) => {
 
         {/* Date */}
         <p 
-          className="font-serif-wedding text-xl text-primary opacity-0 animate-fade-in-up"
+          className="font-vremya text-xl text-primary opacity-0 animate-fade-in-up"
           style={{ animationDelay: '1200ms' }}
         >
           18 Juli 2026

@@ -20,7 +20,7 @@ export const SlideInvitation: React.FC<SlideInvitationProps> = ({ showContent })
 
         {/* Salam */}
         <p 
-          className="font-serif-wedding text-lg text-primary opacity-0 animate-fade-in-up"
+          className="font-vremya text-lg text-primary opacity-0 animate-fade-in-up"
           style={{ animationDelay: '300ms' }}
         >
           Assalamualaikum Wr. Wb.
@@ -36,7 +36,7 @@ export const SlideInvitation: React.FC<SlideInvitationProps> = ({ showContent })
 
         {/* Message */}
         <p 
-          className="font-serif-wedding text-sm text-primary/80 leading-relaxed opacity-0 animate-fade-in-up"
+          className="font-vremya text-sm text-primary/80 leading-relaxed opacity-0 animate-fade-in-up"
           style={{ animationDelay: '700ms' }}
         >
           Dengan penuh suka cita,<br />
@@ -46,7 +46,7 @@ export const SlideInvitation: React.FC<SlideInvitationProps> = ({ showContent })
         </p>
 
         <p 
-          className="font-serif-wedding text-sm text-primary/80 leading-relaxed opacity-0 animate-fade-in-up"
+          className="font-vremya text-sm text-primary/80 leading-relaxed opacity-0 animate-fade-in-up"
           style={{ animationDelay: '1000ms' }}
         >
           Kehadiran serta doa dari anda<br />

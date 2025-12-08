@@ -12,17 +12,17 @@ export const SlideClosing: React.FC<SlideClosingProps> = ({ showContent }) => {
       <div className="text-center space-y-4">
         {/* Initials */}
         <div className="flex flex-col items-center gap-0 opacity-0 animate-fade-in-scale">
-          <span className="font-script text-5xl text-primary">A</span>
-          <span className="font-serif-wedding text-lg text-primary/70 -my-1">&</span>
-          <span className="font-script text-5xl text-primary">A</span>
+          <span className="font-anatomical text-5xl text-primary">A</span>
+          <span className="font-vremya text-lg text-primary/70 -my-1">&</span>
+          <span className="font-anatomical text-5xl text-primary">A</span>
         </div>
 
         {/* Names */}
         <h2 
-          className="font-script text-3xl text-primary opacity-0 animate-fade-in-up"
+          className="font-anatomical text-3xl text-primary opacity-0 animate-fade-in-up"
           style={{ animationDelay: '300ms' }}
         >
-          Alifa & Artha
+          Alifa <span className="font-vremya text-xl">&</span> Artha
         </h2>
 
         {/* Quote */}
@@ -32,10 +32,10 @@ export const SlideClosing: React.FC<SlideClosingProps> = ({ showContent }) => {
         >
           <div className="w-16 h-px bg-gradient-to-r from-transparent via-wedding-gold to-transparent mx-auto" />
           
-          <p className="font-serif-wedding text-xs text-primary/80 leading-relaxed italic px-2">
+          <p className="font-vremya text-xs text-primary/80 leading-relaxed italic px-2">
             "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."
           </p>
-          <p className="font-serif-wedding text-xs text-primary font-semibold">(QS. Ar-Rum: 21)</p>
+          <p className="font-vremya text-xs text-primary font-semibold">(QS. Ar-Rum: 21)</p>
         </div>
 
         {/* Doa */}
@@ -43,14 +43,14 @@ export const SlideClosing: React.FC<SlideClosingProps> = ({ showContent }) => {
           className="opacity-0 animate-fade-in-up"
           style={{ animationDelay: '900ms' }}
         >
-          <p className="font-serif-wedding text-xs text-primary/80 leading-relaxed italic px-2">
+          <p className="font-vremya text-xs text-primary/80 leading-relaxed italic px-2">
             "Ya Allah, berkahilah pernikahan kami, limpahkan berkah kepada kami, dan kumpulkanlah kami berdua dalam kebaikan."
           </p>
         </div>
 
         {/* Wassalam */}
         <p 
-          className="font-serif-wedding text-sm text-primary opacity-0 animate-fade-in"
+          className="font-vremya text-sm text-primary opacity-0 animate-fade-in"
           style={{ animationDelay: '1200ms' }}
         >
           Wassalamualaikum Wr. Wb.
