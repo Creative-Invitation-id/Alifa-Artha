@@ -2,19 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&display=swap');
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* HILANGKAN SCROLL */
+  height: 100%;
+  width: 100%;
+  touch-action: none; /* Mencegah scroll accidental */
+}
+
+/* FIX FULLSCREEN iPhone */
+:root {
+  --vh: 1vh;
+}
+
+/* VIEWPORT FIX untuk iOS Safari & Chrome */
+@supports (height: 100svh) {
+  body {
+    height: 100svh; /* Small viewport height - tidak termasuk address bar */
+  }
+}
+
+@supports (height: 100dvh) {
+  body {
+    height: 100dvh; /* Dynamic viewport height - menyesuaikan dengan address bar */
+  }
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&display=swap");
 
 @font-face {
-  font-family: 'Anatomical';
-  src: url('/fonts/Anatomical.ttf') format('truetype');
+  font-family: "Anatomical";
+  src: url("/fonts/Anatomical.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Vremya';
-  src: url('/fonts/Vremya.ttf') format('truetype');
+  font-family: "Vremya";
+  src: url("/fonts/Vremya.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -61,9 +89,9 @@
     --wedding-blush: 350 40% 92%;
 
     /* Fonts */
-    --font-anatomical: 'Anatomical', serif;
-    --font-vremya: 'Vremya', sans-serif;
-    --font-arabic: 'Amiri', serif;
+    --font-anatomical: "Anatomical", serif;
+    --font-vremya: "Vremya", sans-serif;
+    --font-arabic: "Amiri", serif;
   }
 
   .dark {
@@ -116,16 +144,31 @@
 }
 
 @layer components {
+  /* WRAPPER UTAMA (khusus DESKTOP) */
+  .phone-wrapper {
+    @apply flex items-center justify-center bg-black;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    height: 100svh;
+  }
+
+  /* LAYAR HP */
   .phone-container {
     width: 100%;
-    height: 100dvh;
+    height: 100%;
+    min-height: 100dvh;
+    min-height: 100svh;
     @apply bg-gradient-to-br from-wedding-cream via-wedding-blush to-secondary overflow-hidden relative;
   }
 
+  /* Preview mode pada laptop */
   @media (min-width: 640px) {
     .phone-container {
-      max-width: 390px;
-      max-height: 844px;
+      width: 430px; /* ukuran iPhone 14 */
+      height: 932px;
+      border-radius: 20px;
+      overflow: hidden;
     }
   }
 
@@ -180,7 +223,8 @@
   }
 
   @keyframes float {
-    0%, 100% {
+    0%,
+    100% {
       transform: translateY(0);
     }
     50% {
