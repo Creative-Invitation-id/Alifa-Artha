@@ -30,6 +30,14 @@ body {
   }
 }
 
+@supports (-webkit-touch-callout: none) {
+  .font-anatomical {
+    padding:0 11px;
+    overflow: visible;
+  }
+}
+
+
 @import url("https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&display=swap");
 
 @font-face {
@@ -165,10 +173,12 @@ body {
   /* Preview mode pada laptop */
   @media (min-width: 640px) {
     .phone-container {
-      width: 430px; /* ukuran iPhone 14 */
-      height: 932px;
+      /* Preserve exact device size when viewport is tall enough, otherwise scale down to fit vertically */
+      width: min(430px, calc((100vh - 48px) * 430 / 932));
+      height: auto;
+      aspect-ratio: 430 / 932;
       border-radius: 20px;
-      overflow: hidden;
+      transform-origin: top center;
     }
   }
 

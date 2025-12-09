@@ -26,7 +26,7 @@ const WeddingInvitation = () => {
     return () => clearTimeout(timer);
   }, [currentSlide]);
 
-  useEffect(() => {
+  /*useEffect(() => {
     // Auto advance for first slides
     if (currentSlide === 0) {
       const autoTimer = setTimeout(() => {
@@ -39,7 +39,7 @@ const WeddingInvitation = () => {
       }, 5000);
       return () => clearTimeout(autoTimer);
     }
-  }, [currentSlide]);
+  }, [currentSlide]);*/
 
   useEffect(() => {
     if (viewedSlides.size === TOTAL_SLIDES) {

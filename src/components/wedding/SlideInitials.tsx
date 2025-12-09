@@ -8,17 +8,17 @@ export const SlideInitials: React.FC<SlideInitialsProps> = ({ showContent }) => 
   if (!showContent) return null;
 
   return (
-    <div className="flex flex-col items-center justify-center h-full px-4">
+    <div className="flex flex-col items-center justify-center h-full px-4 pt-6">
       <div className="text-center">
         {/* Initials with staggered animation */}
-        <div className="flex flex-col items-center gap-0">
-          <span className="font-anatomical text-6xl text-primary opacity-0 animate-fade-in-scale leading-none" style={{ animationDelay: "0ms" }}>
+        <div className="flex flex-col items-center gap-0 overflow-visible pr-6">
+          <span className="font-anatomical text-6xl text-primary opacity-0 animate-fade-in-scale leading-none inline-block overflow-visible" style={{ animationDelay: "0ms" }}>
             A
           </span>
-          <span className="font-vremya text-xl text-primary/70 opacity-0 animate-fade-in -my-1" style={{ animationDelay: "300ms" }}>
+          <span className="font-vremya text-xl text-primary/70 opacity-0 animate-fade-in -my-1 inline-block overflow-visible" style={{ animationDelay: "300ms" }}>
             &
           </span>
-          <span className="font-anatomical text-6xl text-primary opacity-0 animate-fade-in-scale leading-none" style={{ animationDelay: "600ms" }}>
+          <span className="font-anatomical text-6xl text-primary opacity-0 animate-fade-in-scale leading-none inline-block overflow-visible" style={{ animationDelay: "600ms" }}>
             A
           </span>
         </div>
