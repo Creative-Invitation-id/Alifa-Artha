@@ -11,12 +11,12 @@ export const CoverIntro: React.FC<CoverIntroProps> = ({ onComplete }) => {
     // Start animation after a brief moment
     const startTimer = setTimeout(() => {
       setAnimating(true);
-    }, 800);
+    }, 1200);
 
     // Call onComplete after animation finishes
     const completeTimer = setTimeout(() => {
       onComplete();
-    }, 2200);
+    }, 3800);
 
     return () => {
       clearTimeout(startTimer);
@@ -26,9 +26,9 @@ export const CoverIntro: React.FC<CoverIntroProps> = ({ onComplete }) => {
 
   return (
     <div className="absolute inset-0 z-[100] pointer-events-none">
-      {/* Top cover */}
+      {/* Top cover - z-index lower */}
       <div 
-        className={`absolute left-0 top-0 w-full h-1/2 transition-transform duration-[1200ms] ease-[cubic-bezier(0.4,0,0.2,1)] ${
+        className={`absolute left-0 top-0 w-full h-1/2 z-[100] transition-transform duration-[2000ms] ease-[cubic-bezier(0.25,0.1,0.25,1)] ${
           animating ? '-translate-y-full' : 'translate-y-0'
         }`}
       >
@@ -39,9 +39,9 @@ export const CoverIntro: React.FC<CoverIntroProps> = ({ onComplete }) => {
         />
       </div>
 
-      {/* Bottom cover */}
+      {/* Bottom cover - z-index higher (on top) */}
       <div 
-        className={`absolute left-0 bottom-0 w-full h-1/2 transition-transform duration-[1200ms] ease-[cubic-bezier(0.4,0,0.2,1)] ${
+        className={`absolute left-0 bottom-0 w-full h-1/2 z-[101] transition-transform duration-[2000ms] ease-[cubic-bezier(0.25,0.1,0.25,1)] ${
           animating ? 'translate-y-full' : 'translate-y-0'
         }`}
       >
