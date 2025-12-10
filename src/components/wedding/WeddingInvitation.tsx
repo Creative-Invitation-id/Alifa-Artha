@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { FlowerDecoration } from "./FlowerDecoration";
+import { CoverIntro } from "./CoverIntro";
 import { SlideInitials } from "./SlideInitials";
 import { SlideNames } from "./SlideNames";
 import { SlideInvitation } from "./SlideInvitation";
@@ -16,6 +17,7 @@ const WeddingInvitation = () => {
   const [frameReady, setFrameReady] = useState(false);
   const [hasViewedAll, setHasViewedAll] = useState(false);
   const [viewedSlides, setViewedSlides] = useState(new Set([0]));
+  const [showCover, setShowCover] = useState(true);
 
   useEffect(() => {
     // when slide changes, hide content and remount frame so its animation replays
@@ -41,21 +43,6 @@ const WeddingInvitation = () => {
     return () => clearTimeout(t);
   }, [frameReady, currentSlide]);
 
-  /*useEffect(() => {
-    // Auto advance for first slides
-    if (currentSlide === 0) {
-      const autoTimer = setTimeout(() => {
-        setCurrentSlide(1);
-      }, 4000);
-      return () => clearTimeout(autoTimer);
-    } else if (currentSlide < TOTAL_SLIDES - 1) {
-      const autoTimer = setTimeout(() => {
-        setCurrentSlide((prev) => prev + 1);
-      }, 5000);
-      return () => clearTimeout(autoTimer);
-    }
-  }, [currentSlide]);*/
-
   useEffect(() => {
     if (viewedSlides.size === TOTAL_SLIDES) {
       setHasViewedAll(true);
@@ -74,6 +61,10 @@ const WeddingInvitation = () => {
     }
   }, [currentSlide]);
 
+  const handleCoverComplete = useCallback(() => {
+    setShowCover(false);
+  }, []);
+
   // Slide indicators
   const SlideIndicators = () => (
     <div className="absolute bottom-22 left-0 right-0 flex justify-center gap-1.5 z-30">
@@ -88,44 +79,82 @@ const WeddingInvitation = () => {
     </div>
   );
 
+  // Corner flowers for slide 2 (top-left and bottom-right)
+  const Slide2Flowers = () => (
+    <>
+      <div className="absolute left-0 top-0 w-1/2 pointer-events-none z-20 overflow-visible animate-frame-corner-in">
+        <div className="animate-corner-pulse-tl">
+          <img
+            src="/top-l.svg"
+            alt="frame top-left"
+            loading="eager"
+            decoding="async"
+            className="w-full block object-cover frame-img"
+            style={{ height: '30%', objectFit: 'cover' }}
+          />
+        </div>
+      </div>
+      <div className="absolute right-0 bottom-0 w-1/2 pointer-events-none z-20 overflow-visible animate-frame-corner-in">
+        <div className="animate-corner-pulse-br">
+          <img
+            src="/bot-r.svg"
+            alt="frame bottom-right"
+            loading="eager"
+            decoding="async"
+            className="w-full block object-cover frame-img"
+            style={{ height: '30%', objectFit: 'cover' }}
+          />
+        </div>
+      </div>
+    </>
+  );
+
+  // Corner flowers for slide 3 (top-right and bottom-left)
+  const Slide3Flowers = () => (
+    <>
+      <div className="absolute right-0 top-0 w-1/2 pointer-events-none z-20 overflow-visible animate-frame-corner-in">
+        <div className="animate-corner-pulse-tr">
+          <img
+            src="/top-r.svg"
+            alt="frame top-right"
+            loading="eager"
+            decoding="async"
+            className="w-full block object-cover frame-img"
+            style={{ height: '30%', objectFit: 'cover' }}
+          />
+        </div>
+      </div>
+      <div className="absolute left-0 bottom-0 w-1/2 pointer-events-none z-20 overflow-visible animate-frame-corner-in">
+        <div className="animate-corner-pulse-bl">
+          <img
+            src="/bot-l.svg"
+            alt="frame bottom-left"
+            loading="eager"
+            decoding="async"
+            className="w-full block object-cover frame-img"
+            style={{ height: '30%', objectFit: 'cover' }}
+          />
+        </div>
+      </div>
+    </>
+  );
+
   return (
     <div className="phone-wrapper">
       {/* Phone container */}
       <div className="phone-container relative">
-        {currentSlide === 0 ? (
-          // Slide 0: Full frame curtain effect
-          <FlowerDecoration key={frameKey} onFrameReady={() => setFrameReady(true)} />
-        ) : currentSlide === 1 ? (
-          // Slide 1: Corner frames (top-left and bottom-right)
-          <>
-            {/* Top-left corner frame */}
-            <div className="absolute left-0 top-0 w-1/2 pointer-events-none z-20 overflow-visible animate-frame-corner-in">
-              <img
-                src="/top-l.svg"
-                alt="frame top-left"
-                loading="eager"
-                decoding="async"
-                className="w-full block object-cover frame-img"
-                style={{ height: '30%', objectFit: 'cover' }}
-              />
-            </div>
+        {/* Cover intro */}
+        {showCover && <CoverIntro onComplete={handleCoverComplete} />}
 
-            {/* Bottom-right corner frame */}
-            <div className="absolute right-0 bottom-0 w-1/2 pointer-events-none z-20 overflow-visible animate-frame-corner-in">
-              <img
-                src="/bot-r.svg"
-                alt="frame bottom-right"
-                loading="eager"
-                decoding="async"
-                className="w-full block object-cover frame-img"
-                style={{ height: '30%', objectFit: 'cover' }}
-              />
-            </div>
-          </>
-        ) : currentSlide === 2 ? (
-          // Slide 2: No frames
-          null
-        ) : null}
+        {/* Flower decorations based on slide */}
+        {currentSlide === 0 && (
+          <FlowerDecoration key={frameKey} onFrameReady={() => setFrameReady(true)} />
+        )}
+        {currentSlide === 1 && <Slide2Flowers />}
+        {currentSlide === 2 && <Slide3Flowers />}
+        {(currentSlide === 3 || currentSlide === 4) && (
+          <FlowerDecoration key={`frame-${currentSlide}-${frameKey}`} onFrameReady={() => setFrameReady(true)} />
+        )}
 
         {/* Content area */}
         <div className={`relative z-10 h-full ${showContent ? 'animate-slide-in' : ''}`}>

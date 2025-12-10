@@ -451,4 +451,57 @@ body {
     animation: frame-corner-fade-in 0.8s ease-out forwards;
     animation-delay: 0.2s;
   }
+
+  /* Corner flower pulse animations */
+  @keyframes corner-pulse-top-left {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    50% {
+      transform: translate(5px, 5px) scale(1.02);
+    }
+  }
+
+  @keyframes corner-pulse-bottom-right {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    50% {
+      transform: translate(-5px, -5px) scale(1.02);
+    }
+  }
+
+  @keyframes corner-pulse-top-right {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    50% {
+      transform: translate(-5px, 5px) scale(1.02);
+    }
+  }
+
+  @keyframes corner-pulse-bottom-left {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    50% {
+      transform: translate(5px, -5px) scale(1.02);
+    }
+  }
+
+  .animate-corner-pulse-tl {
+    animation: corner-pulse-top-left 2.5s ease-in-out infinite;
+  }
+
+  .animate-corner-pulse-br {
+    animation: corner-pulse-bottom-right 2.5s ease-in-out infinite;
+  }
+
+  .animate-corner-pulse-tr {
+    animation: corner-pulse-top-right 2.5s ease-in-out infinite;
+  }
+
+  .animate-corner-pulse-bl {
+    animation: corner-pulse-bottom-left 2.5s ease-in-out infinite;
+  }
 }
