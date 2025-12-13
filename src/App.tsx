@@ -12,17 +12,16 @@ const queryClient = new QueryClient();
 
 const App = () => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  // Start muted so autoplay is allowed by browsers, then attempt to unmute programmatically.
+  // Start muted so autoplay is allowed by browsers
   const [isMuted, setIsMuted] = useState(true);
 
   useEffect(() => {
     // Auto-play /muara.mp3 from a specific start second and loop by replaying from that second.
-    const START_SECOND = 33; // change this value to start from a different second
+    const START_SECOND = 33;
     const src = "/muara.mp3";
     const audio = new Audio(src);
     audio.preload = "auto";
-    audio.loop = false; // we'll manually rewind and replay
-    // start muted to satisfy autoplay policies
+    audio.loop = false;
     audio.muted = true;
     audioRef.current = audio;
 
@@ -30,7 +29,7 @@ const App = () => {
       try {
         await audio.play();
       } catch (e) {
-        // Autoplay may be blocked by the browser until user interaction.
+        // Autoplay may be blocked
       }
     };
 
@@ -44,19 +43,8 @@ const App = () => {
       } else {
         audio.currentTime = 0;
       }
-      // First play muted (most browsers allow this)
+      // Play muted first
       await tryPlay();
-
-      // Then try to unmute programmatically — may still be blocked by some browsers
-      try {
-        audio.muted = false;
-        await audio.play();
-        setIsMuted(false);
-      } catch (err) {
-        // If unmute is blocked, keep muted and reflect that in UI
-        audio.muted = true;
-        setIsMuted(true);
-      }
     };
 
     const onEnded = () => {
@@ -68,17 +56,23 @@ const App = () => {
       tryPlay();
     };
 
+    // Listen for unmute event from Open Invitation button
+    const handleUnmute = () => {
+      setIsMuted(false);
+    };
+
+    window.addEventListener('unmuteAudio', handleUnmute);
     audio.addEventListener("loadedmetadata", onLoaded);
     audio.addEventListener("ended", onEnded);
 
     if (audio.readyState >= 1) {
-      // If metadata already available, call handler (it may be async)
       onLoaded();
     } else {
       audio.load();
     }
 
     return () => {
+      window.removeEventListener('unmuteAudio', handleUnmute);
       audio.removeEventListener("loadedmetadata", onLoaded);
       audio.removeEventListener("ended", onEnded);
       audio.pause();
@@ -102,11 +96,11 @@ const App = () => {
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        {/* Mute/Unmute toggle */}
+        {/* Mute/Unmute toggle - left side, slightly middle, transparent */}
         <button
           aria-label={isMuted ? "Unmute audio" : "Mute audio"}
           onClick={() => setIsMuted((v) => !v)}
-          className="fixed top-4 right-4 z-50 bg-primary text-primary-foreground p-2 rounded-full shadow-lg"
+          className="fixed left-4 top-1/3 z-50 bg-primary/50 text-primary-foreground p-2 rounded-full backdrop-blur-sm hover:bg-primary/70 transition-all"
         >
           {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
         </button>
