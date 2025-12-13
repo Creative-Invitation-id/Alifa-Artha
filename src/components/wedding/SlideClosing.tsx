@@ -8,12 +8,12 @@ export const SlideClosing: React.FC<SlideClosingProps> = ({ showContent }) => {
   if (!showContent) return null;
 
   return (
-    <div className="flex flex-col items-center justify-center h-full px-5">
-      <div className="text-center space-y-9">
+    <div className="flex flex-col items-center justify-center h-full px-16 ">
+      <div className="text-center space-y-2">
         {/* Initials */}
         <div className="flex flex-col items-center gap-0 opacity-0 animate-fade-in-scale">
           <span className="font-anatomical text-5xl text-primary">A</span>
-          <span className="font-vremya text-lg text-primary/70 -my-1">&</span>
+          <span className="font-vremya text-lg text-primary/70 -my-3">&</span>
           <span className="font-anatomical text-5xl text-primary">A</span>
         </div>
 
@@ -27,7 +27,7 @@ export const SlideClosing: React.FC<SlideClosingProps> = ({ showContent }) => {
 
         {/* Quote */}
         <div 
-          className="space-y-3 opacity-0 animate-fade-in-up"
+          className="space-y-1 opacity-0 animate-fade-in-up"
           style={{ animationDelay: '600ms' }}
         >
           <div className="w-16 h-px bg-gradient-to-r from-transparent via-wedding-gold to-transparent mx-auto" />
@@ -43,7 +43,7 @@ export const SlideClosing: React.FC<SlideClosingProps> = ({ showContent }) => {
           className="opacity-0 animate-fade-in-up"
           style={{ animationDelay: '900ms' }}
         >
-          <p className="font-vremya text-xs text-primary/80 leading-relaxed italic px-2">
+          <p className=" font-vremya text-xs text-primary/80 leading-relaxed italic px-2">
             "Ya Allah, berkahilah pernikahan kami, limpahkan berkah kepada kami, dan kumpulkanlah kami berdua dalam kebaikan."
           </p>
         </div>
