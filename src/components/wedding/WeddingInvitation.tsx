@@ -62,6 +62,7 @@ const WeddingInvitation = () => {
 
   const handleOpenInvitation = useCallback(() => {
     setIsOpened(true);
+    setCurrentSlide(1); // Navigate to slide 2
     // Dispatch custom event to unmute audio
     window.dispatchEvent(new CustomEvent('unmuteAudio'));
   }, []);
@@ -102,12 +103,12 @@ const WeddingInvitation = () => {
         {/* Slide indicators */}
         <SlideIndicators />
 
-        {/* Open Invitation Button - only on slide 0 when not opened */}
+        {/* Open Invitation Button - only on slide 0 when not opened, bottom 1/3 */}
         {currentSlide === 0 && !isOpened && (
-          <div className="absolute bottom-16 left-0 right-0 flex justify-center px-4 z-20">
+          <div className="absolute bottom-[30%] left-0 right-0 flex justify-center px-4 z-20">
             <button 
               onClick={handleOpenInvitation} 
-              className="bg-primary text-primary-foreground px-8 py-3 rounded-full hover:bg-primary/90 transition-all font-vremya tracking-wider text-sm uppercase"
+              className="bg-primary text-primary-foreground px-5 py-2 rounded-full hover:bg-primary/90 transition-all font-vremya tracking-wider text-xs uppercase"
             >
               Open Invitation
             </button>

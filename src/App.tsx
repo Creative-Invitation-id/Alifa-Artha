@@ -96,13 +96,13 @@ const App = () => {
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        {/* Mute/Unmute toggle - left side, slightly middle, transparent */}
+        {/* Mute/Unmute toggle - top 1/3, left side, transparent */}
         <button
           aria-label={isMuted ? "Unmute audio" : "Mute audio"}
           onClick={() => setIsMuted((v) => !v)}
-          className="fixed left-4 top-1/3 z-50 bg-primary/50 text-primary-foreground p-2 rounded-full backdrop-blur-sm hover:bg-primary/70 transition-all"
+          className="fixed left-4 top-[15%] z-50 bg-primary/20 text-primary p-1.5 rounded-full backdrop-blur-sm hover:bg-primary/30 transition-all"
         >
-          {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
+          {isMuted ? <VolumeX size={14} /> : <Volume2 size={14} />}
         </button>
         <BrowserRouter>
           <Routes>
