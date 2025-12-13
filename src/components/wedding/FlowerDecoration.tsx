@@ -35,7 +35,7 @@ export const FlowerDecoration: React.FC<FlowerDecorationProps> = ({ onFrameReady
       <div className="absolute left-0 top-0 w-full pointer-events-none z-[60] overflow-visible">
         <div className="flower-top w-full">
           <img
-            src="/frame-top.svg"
+            src="/frame-top.png"
             alt="frame top"
             loading="eager"
             decoding="async"
@@ -52,7 +52,7 @@ export const FlowerDecoration: React.FC<FlowerDecorationProps> = ({ onFrameReady
       <div className="absolute left-0 bottom-0 w-full pointer-events-none z-[60] overflow-visible">
         <div className="flower-bottom w-full">
           <img
-            src="/frame-bot.svg"
+            src="/frame-bot.png"
             alt="frame bottom"
             loading="eager"
             decoding="async"
