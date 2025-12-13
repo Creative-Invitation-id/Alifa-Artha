@@ -32,11 +32,10 @@ body {
 
 @supports (-webkit-touch-callout: none) {
   .font-anatomical {
-    padding:0 11px;
+    padding: 0 11px;
     overflow: visible;
   }
 }
-
 
 @import url("https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&display=swap");
 
@@ -58,22 +57,28 @@ body {
 
 @layer base {
   :root {
-    --background: 30 50% 98%;
+    /* background variables: save old values as --*-old then set to white */
+    --background-old: 30 50% 98%;
+    --background: 0 0% 100%;
     --foreground: 350 30% 25%;
 
-    --card: 30 40% 96%;
+    --card-old: 30 40% 96%;
+    --card: 0 0% 100%;
     --card-foreground: 350 30% 25%;
 
-    --popover: 30 40% 96%;
+    --popover-old: 30 40% 96%;
+    --popover: 0 0% 100%;
     --popover-foreground: 350 30% 25%;
 
     --primary: 350 45% 40%;
     --primary-foreground: 30 50% 98%;
 
-    --secondary: 35 60% 90%;
+    --secondary-old: 35 60% 90%;
+    --secondary: 0 0% 100%;
     --secondary-foreground: 350 30% 25%;
 
-    --muted: 30 30% 92%;
+    --muted-old: 30 30% 92%;
+    --muted: 0 0% 100%;
     --muted-foreground: 350 20% 45%;
 
     --accent: 38 70% 60%;
@@ -88,13 +93,15 @@ body {
 
     --radius: 0.5rem;
 
-    /* Wedding theme colors */
+    /* Wedding theme colors (make cream/blush white for full-white background) */
     --wedding-pink: 350 60% 65%;
     --wedding-pink-dark: 350 45% 40%;
     --wedding-coral: 15 70% 65%;
     --wedding-gold: 38 70% 55%;
-    --wedding-cream: 40 50% 96%;
-    --wedding-blush: 350 40% 92%;
+    --wedding-cream-old: 40 50% 96%;
+    --wedding-cream: 0 0% 100%;
+    --wedding-blush-old: 350 40% 92%;
+    --wedding-blush: 0 0% 100%;
 
     /* Fonts */
     --font-anatomical: "Anatomical", serif;
@@ -290,7 +297,7 @@ body {
   }
 
   .animate-frame-enter {
-    animation: frame-enter 1.1s cubic-bezier(.2,.9,.3,1) both;
+    animation: frame-enter 1.1s cubic-bezier(0.2, 0.9, 0.3, 1) both;
     will-change: transform, opacity;
   }
 
@@ -373,7 +380,7 @@ body {
   }
 
   .animate-fade-in-ease {
-    animation: fade-in-ease 1s cubic-bezier(.22,.9,.33,1) forwards;
+    animation: fade-in-ease 1s cubic-bezier(0.22, 0.9, 0.33, 1) forwards;
   }
 
   .animation-delay-100 {
@@ -454,7 +461,8 @@ body {
 
   /* Corner flower pulse animations */
   @keyframes corner-pulse-top-left {
-    0%, 100% {
+    0%,
+    100% {
       transform: translate(0, 0) scale(1);
     }
     50% {
@@ -463,7 +471,8 @@ body {
   }
 
   @keyframes corner-pulse-bottom-right {
-    0%, 100% {
+    0%,
+    100% {
       transform: translate(0, 0) scale(1);
     }
     50% {
@@ -472,7 +481,8 @@ body {
   }
 
   @keyframes corner-pulse-top-right {
-    0%, 100% {
+    0%,
+    100% {
       transform: translate(0, 0) scale(1);
     }
     50% {
@@ -481,7 +491,8 @@ body {
   }
 
   @keyframes corner-pulse-bottom-left {
-    0%, 100% {
+    0%,
+    100% {
       transform: translate(0, 0) scale(1);
     }
     50% {

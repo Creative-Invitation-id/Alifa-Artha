@@ -51,7 +51,7 @@ export const SlideDetails: React.FC<SlideDetailsProps> = ({ showContent }) => {
 
         {/* Akad */}
         <div 
-          className="bg-wedding-cream/50 rounded-lg p-3 opacity-0 animate-fade-in-up"
+          className="rounded-lg p-3 opacity-0 animate-fade-in-up"
           style={{ animationDelay: '800ms' }}
         >
           <h3 className="font-vremya text-sm font-semibold text-primary mb-1">Akad Pernikahan</h3>
@@ -72,7 +72,7 @@ export const SlideDetails: React.FC<SlideDetailsProps> = ({ showContent }) => {
 
         {/* Ramah Tamah */}
         <div 
-          className="bg-wedding-cream/50 rounded-lg p-3 opacity-0 animate-fade-in-up"
+          className="rounded-lg p-3 opacity-0 animate-fade-in-up"
           style={{ animationDelay: '1000ms' }}
         >
           <h3 className="font-vremya text-sm font-semibold text-primary mb-1">Ramah Tamah</h3>
