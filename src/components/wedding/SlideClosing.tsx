@@ -9,7 +9,7 @@ export const SlideClosing: React.FC<SlideClosingProps> = ({ showContent }) => {
 
   return (
     <div className="flex flex-col items-center justify-center h-full px-5">
-      <div className="text-center space-y-4">
+      <div className="text-center space-y-9">
         {/* Initials */}
         <div className="flex flex-col items-center gap-0 opacity-0 animate-fade-in-scale">
           <span className="font-anatomical text-5xl text-primary">A</span>
