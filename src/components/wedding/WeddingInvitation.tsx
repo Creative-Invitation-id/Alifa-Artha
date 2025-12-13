@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { FlowerDecoration } from "./FlowerDecoration";
-import { CoverIntro } from "./CoverIntro";
 import { SlideInitials } from "./SlideInitials";
 import { SlideNames } from "./SlideNames";
 import { SlideInvitation } from "./SlideInvitation";
@@ -17,7 +16,7 @@ const WeddingInvitation = () => {
   const [frameReady, setFrameReady] = useState(false);
   const [hasViewedAll, setHasViewedAll] = useState(false);
   const [viewedSlides, setViewedSlides] = useState(new Set([0]));
-  const [showCover, setShowCover] = useState(true);
+  const [isOpened, setIsOpened] = useState(false);
 
   useEffect(() => {
     // when slide changes, hide content and remount frame so its animation replays
@@ -61,100 +60,35 @@ const WeddingInvitation = () => {
     }
   }, [currentSlide]);
 
-  const handleCoverComplete = useCallback(() => {
-    setShowCover(false);
+  const handleOpenInvitation = useCallback(() => {
+    setIsOpened(true);
+    // Dispatch custom event to unmute audio
+    window.dispatchEvent(new CustomEvent('unmuteAudio'));
   }, []);
 
-  // Slide indicators
-  const SlideIndicators = () => (
-    <div className="absolute bottom-22 left-0 right-0 flex justify-center gap-1.5 z-30">
-      {Array.from({ length: TOTAL_SLIDES }).map((_, idx) => (
-        <button
-          key={idx}
-          onClick={() => setCurrentSlide(idx)}
-          className={`w-2 h-2 rounded-full transition-all duration-300 ${idx === currentSlide ? "bg-primary w-6" : "bg-primary/30 hover:bg-primary/50"}`}
-          aria-label={`Go to slide ${idx + 1}`}
-        />
-      ))}
-    </div>
-  );
-
-  // Corner flowers for slide 2 (top-left and bottom-right)
-  const Slide2Flowers = () => (
-    <>
-      <div className="absolute left-0 top-0 w-1/2 pointer-events-none z-20 overflow-visible animate-frame-corner-in">
-        <div className="animate-corner-pulse-tl">
-          <img
-            src="/top-l.svg"
-            alt="frame top-left"
-            loading="eager"
-            decoding="async"
-            className="w-full block object-cover frame-img"
-            style={{ height: '30%', objectFit: 'cover' }}
+  // Slide indicators (only show when opened and not on first slide)
+  const SlideIndicators = () => {
+    if (!isOpened) return null;
+    return (
+      <div className="absolute bottom-28 left-0 right-0 flex justify-center gap-1.5 z-30">
+        {Array.from({ length: TOTAL_SLIDES }).map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => setCurrentSlide(idx)}
+            className={`w-2 h-2 rounded-full transition-all duration-300 ${idx === currentSlide ? "bg-primary w-6" : "bg-primary/30 hover:bg-primary/50"}`}
+            aria-label={`Go to slide ${idx + 1}`}
           />
-        </div>
+        ))}
       </div>
-      <div className="absolute right-0 bottom-0 w-1/2 pointer-events-none z-20 overflow-visible animate-frame-corner-in">
-        <div className="animate-corner-pulse-br">
-          <img
-            src="/bot-r.svg"
-            alt="frame bottom-right"
-            loading="eager"
-            decoding="async"
-            className="w-full block object-cover frame-img"
-            style={{ height: '30%', objectFit: 'cover' }}
-          />
-        </div>
-      </div>
-    </>
-  );
-
-  // Corner flowers for slide 3 (top-right and bottom-left)
-  const Slide3Flowers = () => (
-    <>
-      <div className="absolute right-0 top-0 w-1/2 pointer-events-none z-20 overflow-visible animate-frame-corner-in">
-        <div className="animate-corner-pulse-tr">
-          <img
-            src="/top-r.svg"
-            alt="frame top-right"
-            loading="eager"
-            decoding="async"
-            className="w-full block object-cover frame-img"
-            style={{ height: '30%', objectFit: 'cover' }}
-          />
-        </div>
-      </div>
-      <div className="absolute left-0 bottom-0 w-1/2 pointer-events-none z-20 overflow-visible animate-frame-corner-in">
-        <div className="animate-corner-pulse-bl">
-          <img
-            src="/bot-l.svg"
-            alt="frame bottom-left"
-            loading="eager"
-            decoding="async"
-            className="w-full block object-cover frame-img"
-            style={{ height: '30%', objectFit: 'cover' }}
-          />
-        </div>
-      </div>
-    </>
-  );
+    );
+  };
 
   return (
     <div className="phone-wrapper">
       {/* Phone container */}
       <div className="phone-container relative">
-        {/* Cover intro */}
-        {showCover && <CoverIntro onComplete={handleCoverComplete} />}
-
-        {/* Flower decorations based on slide */}
-        {currentSlide === 0 && (
-          <FlowerDecoration key={frameKey} onFrameReady={() => setFrameReady(true)} />
-        )}
-        {currentSlide === 1 && <Slide2Flowers />}
-        {currentSlide === 2 && <Slide3Flowers />}
-        {(currentSlide === 3 || currentSlide === 4) && (
-          <FlowerDecoration key={`frame-${currentSlide}-${frameKey}`} onFrameReady={() => setFrameReady(true)} />
-        )}
+        {/* Flower decorations - same frame for all slides */}
+        <FlowerDecoration key={frameKey} onFrameReady={() => setFrameReady(true)} />
 
         {/* Content area */}
         <div className={`relative z-10 h-full ${showContent ? 'animate-slide-in' : ''}`}>
@@ -168,20 +102,34 @@ const WeddingInvitation = () => {
         {/* Slide indicators */}
         <SlideIndicators />
 
-        {/* Navigation Buttons */}
-        <div className="absolute bottom-12 left-0 right-0 flex justify-center gap-3 px-4 z-20">
-          {currentSlide > 0 && (
-            <button onClick={prevSlide} className="bg-primary text-primary-foreground p-2 rounded-full hover:bg-primary/90 transition-all shadow-lg" aria-label="Previous slide">
-              <ChevronLeft size={20} />
+        {/* Open Invitation Button - only on slide 0 when not opened */}
+        {currentSlide === 0 && !isOpened && (
+          <div className="absolute bottom-16 left-0 right-0 flex justify-center px-4 z-20">
+            <button 
+              onClick={handleOpenInvitation} 
+              className="bg-primary text-primary-foreground px-8 py-3 rounded-full hover:bg-primary/90 transition-all font-vremya tracking-wider text-sm uppercase"
+            >
+              Open Invitation
             </button>
-          )}
+          </div>
+        )}
 
-          {currentSlide < TOTAL_SLIDES - 1 && (
-            <button onClick={nextSlide} className="bg-primary text-primary-foreground p-2 rounded-full hover:bg-primary/90 transition-all shadow-lg" aria-label="Next slide">
-              <ChevronRight size={20} />
-            </button>
-          )}
-        </div>
+        {/* Navigation Buttons - only show when opened */}
+        {isOpened && (
+          <div className="absolute bottom-16 left-0 right-0 flex justify-center gap-3 px-4 z-20">
+            {currentSlide > 0 && (
+              <button onClick={prevSlide} className="bg-primary text-primary-foreground p-2 rounded-full hover:bg-primary/90 transition-all shadow-lg" aria-label="Previous slide">
+                <ChevronLeft size={20} />
+              </button>
+            )}
+
+            {currentSlide < TOTAL_SLIDES - 1 && (
+              <button onClick={nextSlide} className="bg-primary text-primary-foreground p-2 rounded-full hover:bg-primary/90 transition-all shadow-lg" aria-label="Next slide">
+                <ChevronRight size={20} />
+              </button>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
