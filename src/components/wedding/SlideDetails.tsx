@@ -16,9 +16,9 @@ export const SlideDetails: React.FC<SlideDetailsProps> = ({ showContent }) => {
           className="opacity-0 animate-fade-in-up"
           style={{ animationDelay: '0ms' }}
         >
-          <h2 className="font-anatomical text-4xl text-primary">Artha Adi Wiratama</h2>
+          <h2 className="font-anatomical text-4xl text-primary">Alifa Nurhaeni</h2>
           <p className="font-vremya text-[12px] text-primary/70 mt-0.5">
-            Putra Bpk. Achmad Ilyas & Ibu Endang Purwati
+            Putri Bpk. Wanto & Ibu Heni Parwati
           </p>
         </div>
 
@@ -34,9 +34,10 @@ export const SlideDetails: React.FC<SlideDetailsProps> = ({ showContent }) => {
           className="opacity-0 animate-fade-in-up"
           style={{ animationDelay: '400ms' }}
         >
-          <h2 className="font-anatomical text-4xl text-primary">Alifa Nurhaeni</h2>
+          
+          <h2 className="font-anatomical text-4xl text-primary">Artha Adi Wiratama</h2>
           <p className="font-vremya text-[12px] text-primary/70 mt-0.5">
-            Putri Bpk. Wanto & Ibu Heni Parwati
+            Putra Bpk. Achmad Ilyas & Ibu Endang Purwati
           </p>
         </div>
 
