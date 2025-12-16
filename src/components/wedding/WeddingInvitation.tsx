@@ -93,7 +93,7 @@ const WeddingInvitation = () => {
             {/* Top-left corner frame for SlideDetails (left-top.webp) -> Floating ke Atas */}
             <div className="absolute left-0 top-0 w-[40%] pointer-events-none z-[60]">
               <img
-                src="/left-top.webp"
+                src="/left-top.png"
                 alt="frame top left"
                 loading="eager"
                 // MENGGUNAKAN float-up
@@ -104,7 +104,7 @@ const WeddingInvitation = () => {
             {/* Bottom-right corner frame for SlideDetails (right-bot.webp) -> Floating ke Bawah */}
             <div className="absolute right-0 bottom-0 w-[40%] pointer-events-none z-[60]">
               <img
-                src="/right-bot.webp"
+                src="/right-bot.png"
                 alt="frame bottom right"
                 loading="eager"
                 // MENGGUNAKAN float-down
