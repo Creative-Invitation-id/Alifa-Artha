@@ -87,12 +87,37 @@ const WeddingInvitation = () => {
     <div className="phone-wrapper">
       {/* Phone container */}
       <div className="phone-container relative">
-        {/* Flower decorations - same frame for all slides */}
-        <FlowerDecoration key={frameKey} onFrameReady={() => setFrameReady(true)} />
+        {/* Flower decorations - different for SlideDetails */}
+        {currentSlide === 2 ? (
+          <>
+            {/* Top-left corner frame for SlideDetails */}
+            <div className="absolute left-0 top-0 w-1/2 pointer-events-none z-[60]">
+              <img
+                src="/left-top.webp"
+                alt="frame top left"
+                loading="eager"
+                className="w-full block animate-frame-enter"
+                style={{ animation: 'frame-enter 1.1s cubic-bezier(.2,.9,.3,1) both' }}
+              />
+            </div>
+            {/* Bottom-right corner frame for SlideDetails */}
+            <div className="absolute right-0 bottom-0 w-1/2 pointer-events-none z-[60]">
+              <img
+                src="/right-bot.webp"
+                alt="frame bottom right"
+                loading="eager"
+                className="w-full block animate-frame-enter"
+                style={{ animation: 'frame-enter 1.1s cubic-bezier(.2,.9,.3,1) both 160ms' }}
+              />
+            </div>
+          </>
+        ) : (
+          <FlowerDecoration key={frameKey} onFrameReady={() => setFrameReady(true)} />
+        )}
 
         {/* Content area */}
         <div className={`relative z-10 h-full ${showContent ? "animate-slide-in" : ""}`}>
-          {currentSlide === 0 && <SlideInitials showContent={showContent} />}
+          {currentSlide === 0 && <SlideInitials showContent={showContent} isOpened={isOpened} onOpenInvitation={handleOpenInvitation} />}
           {currentSlide === 1 && <SlideInvitation showContent={showContent} />}
           {currentSlide === 2 && <SlideDetails showContent={showContent} />}
           {currentSlide === 3 && <SlideClosing showContent={showContent} />}
@@ -100,15 +125,6 @@ const WeddingInvitation = () => {
 
         {/* Slide indicators */}
         <SlideIndicators />
-
-        {/* Open Invitation Button - only on slide 0 when not opened, bottom 1/3 */}
-        {currentSlide === 0 && !isOpened && (
-          <div className="absolute bottom-[25%] left-0 right-0 flex justify-center px-4 z-20">
-            <button onClick={handleOpenInvitation} className="bg-primary text-primary-foreground px-5 py-2 rounded-full hover:bg-primary/90 transition-all font-vremya tracking-wider text-xs uppercase">
-              Open Invitation
-            </button>
-          </div>
-        )}
 
         {/* Navigation Buttons - only show when opened */}
         {isOpened && (
