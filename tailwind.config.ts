@@ -87,9 +87,13 @@ export default {
           "0%": { opacity: "0", transform: "scale(0.9)" },
           "100%": { opacity: "1", transform: "scale(1)" },
         },
-        float: {
+        "float-up": {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-10px)" },
+        },
+        "float-down": { // Keyframes baru untuk bergerak ke bawah
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(10px)" }, // Bergerak ke bawah (nilai positif)
         },
       },
       animation: {
@@ -99,6 +103,8 @@ export default {
         "fade-in": "fade-in 1s ease-out forwards",
         "fade-in-scale": "fade-in-scale 1s ease-out forwards",
         float: "float 3s ease-in-out infinite",
+        "float-up": "float-up 3s ease-in-out infinite", // Animasi float ke atas
+        "float-down": "float-down 3s ease-in-out infinite"
       },
     },
   },

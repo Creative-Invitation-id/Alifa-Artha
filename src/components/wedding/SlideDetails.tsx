@@ -46,7 +46,7 @@ export const SlideDetails: React.FC<SlideDetailsProps> = ({ showContent }) => {
           style={{ animationDelay: '600ms' }}
         >
           <div className="w-12 h-px bg-gradient-to-r from-transparent via-wedding-gold to-transparent mx-auto mb-1" />
-          <p className="font-vremya text-[10px] text-primary font-semibold">Sabtu, 18 Juli 2026</p>
+          <p className="font-vremya text-[15px] text-primary font-semibold">Sabtu, 18 Juli 2026</p>
         </div>
 
         {/* Akad */}
@@ -54,10 +54,10 @@ export const SlideDetails: React.FC<SlideDetailsProps> = ({ showContent }) => {
           className="rounded-lg p-1.5 opacity-0 animate-fade-in-up"
           style={{ animationDelay: '800ms' }}
         >
-          <h3 className="font-vremya text-xs font-semibold text-primary mb-0.5">Akad Pernikahan</h3>
-          <p className="font-vremya text-[10px] text-primary/80">08.00 - Selesai</p>
-          <p className="font-vremya text-[10px] text-primary/80">Masjid Al-Ukhuwah</p>
-          <p className="font-vremya text-[9px] text-primary/70 mt-0.5 leading-tight">
+          <h3 className="font-vremya text-sm font-semibold text-primary mb-0.5">Akad Pernikahan</h3>
+          <p className="font-vremya text-[15px] text-primary/80">08.00 - Selesai</p>
+          <p className="font-vremya text-[15px] text-primary/80">Masjid Al-Ukhuwah</p>
+          <p className="font-vremya text-[14px] text-primary/70 mt-0.5 leading-tight">
             Jl. Ikan Oscar No.19, Tambakrejo, Waru, Sidoarjo
           </p>
           <a
@@ -76,9 +76,9 @@ export const SlideDetails: React.FC<SlideDetailsProps> = ({ showContent }) => {
           className="rounded-lg p-1.5 opacity-0 animate-fade-in-up"
           style={{ animationDelay: '1000ms' }}
         >
-          <h3 className="font-vremya text-xs font-semibold text-primary mb-0.5">Ramah Tamah</h3>
-          <p className="font-vremya text-[10px] text-primary/80">13.00 - Selesai</p>
-          <p className="font-vremya text-[9px] text-primary/70 mt-0.5 leading-tight">
+          <h3 className="font-vremya text-sm font-semibold text-primary mb-0.5">Ramah Tamah</h3>
+          <p className="font-vremya text-[15px] text-primary/80">13.00 - Selesai</p>
+          <p className="font-vremya text-[14px] text-primary/70 mt-0.5 leading-tight">
             Jl. Ikan Gabus No. A42, Tambakrejo, Waru, Sidoarjo
           </p>
           <a

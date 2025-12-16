@@ -90,28 +90,31 @@ const WeddingInvitation = () => {
         {/* Flower decorations - different for SlideDetails */}
         {currentSlide === 2 ? (
           <>
-            {/* Top-left corner frame for SlideDetails */}
-            <div className="absolute left-0 top-0 w-1/2 pointer-events-none z-[60]">
+            {/* Top-left corner frame for SlideDetails (left-top.webp) -> Floating ke Atas */}
+            <div className="absolute left-0 top-0 w-[40%] pointer-events-none z-[60]">
               <img
                 src="/left-top.webp"
                 alt="frame top left"
                 loading="eager"
-                className="w-full block animate-frame-enter"
-                style={{ animation: 'frame-enter 1.1s cubic-bezier(.2,.9,.3,1) both' }}
+                // MENGGUNAKAN float-up
+                className="w-full block animate-frame-enter animate-float-up"
+                style={{ animation: 'frame-enter 1.1s cubic-bezier(.2,.9,.3,1) both, float-up 3s ease-in-out infinite' }}
               />
             </div>
-            {/* Bottom-right corner frame for SlideDetails */}
-            <div className="absolute right-0 bottom-0 w-1/2 pointer-events-none z-[60]">
+            {/* Bottom-right corner frame for SlideDetails (right-bot.webp) -> Floating ke Bawah */}
+            <div className="absolute right-0 bottom-0 w-[40%] pointer-events-none z-[60]">
               <img
                 src="/right-bot.webp"
                 alt="frame bottom right"
                 loading="eager"
-                className="w-full block animate-frame-enter"
-                style={{ animation: 'frame-enter 1.1s cubic-bezier(.2,.9,.3,1) both 160ms' }}
+                // MENGGUNAKAN float-down
+                className="w-full block animate-frame-enter animate-float-down"
+                style={{ animation: 'frame-enter 1.1s cubic-bezier(.2,.9,.3,1) both 160ms, float-down 3s ease-in-out infinite 160ms' }}
               />
             </div>
           </>
         ) : (
+          // Asumsi FlowerDecoration menggunakan float-up atau float-down sesuai dengan posisinya
           <FlowerDecoration key={frameKey} onFrameReady={() => setFrameReady(true)} />
         )}
 
